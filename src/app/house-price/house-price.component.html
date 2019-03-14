@@ -1,0 +1,23 @@
+
+
+<h2> Available Areas</h2>
+<ul class="house-price">
+  <li *ngFor="let a of availableAreas"
+  [class.selected]="a === selectedArea"
+  (click)="onSelectArea(a)">
+    <span >{{a}}</span>
+  </li>
+</ul>
+<div *ngIf="selectedArea">
+
+
+<div>
+  <label>Area:
+    <input [(ngModel)]="selectedArea" placeholder="area"/>
+  </label>
+  <label>rooms:
+    <input [(ngModel)]="houseFeatures.rooms" placeholder="rooms"/>
+  </label>
+</div>
+</div>
+
