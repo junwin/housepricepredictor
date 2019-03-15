@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HouseFeatures } from '../houseFeatures'
+import { HouseFeatures } from '../houseFeatures';
 import { AREAS } from '../mock-areas';
+import { HousePriceCalcService } from '../house-price-calc.service';
 
 @Component({
   selector: 'app-house-price',
@@ -11,17 +12,28 @@ export class HousePriceComponent implements OnInit {
 
   houseFeatures: HouseFeatures = {
      area: '76',
-     rooms: 7
+    houseType: 'condo',
+    rooms: 7,
+    bedRooms: 3,
+    bedRoomsBsmt: 0,
+    fullBath: 2,
+    halfBath: 0,
+    approxSquFeet: 1200,
+    garageType: 'attached',
+    garageSpaces: 2,
+    parkingSpaces: 0
   };
 
-  availableAreas = AREAS;
+  availableAreas: string[];
+  selectedArea: string;
 
-  constructor() { }
+  constructor(private priceCalcService: HousePriceCalcService) { }
 
   ngOnInit() {
+    this.availableAreas = this.priceCalcService.getAreas();
   }
 
-  selectedArea: string;
+
 
   onSelectArea(a: string): void {
     this.selectedArea = a;
