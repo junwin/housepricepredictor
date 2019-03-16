@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HouseFeatures } from '../houseFeatures';
 import { AREAS } from '../mock-areas';
 import { HousePriceCalcService } from '../house-price-calc.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-house-price',
@@ -10,7 +11,7 @@ import { HousePriceCalcService } from '../house-price-calc.service';
 })
 export class HousePriceComponent implements OnInit {
 
-  houseFeatures: HouseFeatures = {
+  houseFeature: HouseFeatures = {
      area: '76',
     houseType: 'condo',
     rooms: 7,
@@ -26,6 +27,7 @@ export class HousePriceComponent implements OnInit {
 
   availableAreas: string[];
   selectedArea: string;
+  housePrice: Observable<string>;
 
   constructor(private priceCalcService: HousePriceCalcService) { }
 
@@ -37,6 +39,7 @@ export class HousePriceComponent implements OnInit {
 
   onSelectArea(a: string): void {
     this.selectedArea = a;
+    this.housePrice = this.priceCalcService.getPrice(this.houseFeature);
   }
 }
 

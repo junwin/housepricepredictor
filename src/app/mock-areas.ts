@@ -1,3 +1,3 @@
 export const AREAS: string[] = [
-    '76','36'
+    '76','11'
 ];

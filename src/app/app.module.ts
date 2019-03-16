@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HousePriceComponent } from './house-price/house-price.component';
 import { FormsModule } from '@angular/forms'; 
+import { HttpClientModule }    from '@angular/common/http';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule
+    AppRoutingModule,FormsModule,HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
